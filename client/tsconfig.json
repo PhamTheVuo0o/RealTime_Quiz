@@ -1,0 +1,75 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    /* Paths */
+    "baseUrl": "./src",
+    "types": [],
+    "paths": {
+      "@Share/*": [
+        "app/share/*"
+      ],
+      "@ShareUis": [
+        "app/share/uis/index"
+      ],
+      "@ShareUtils": [
+        "app/share/utils/index"
+      ],
+      "@ShareConstants": [
+        "app/share/constants/index"
+      ],
+      "@ShareStores": [
+        "app/share/stores/index"
+      ],
+      "@ShareCores": [
+        "app/share/cores/index"
+      ],
+      "@ShareEnums": [
+        "app/share/enums/index"
+      ],
+      "@ShareLayouts": [
+        "app/share/layouts/index"
+      ],
+      "@Pages": [
+        "app/pages/index"
+      ],
+      "@ShareModels": [
+        "app/share/models/index"
+      ],
+      "@ShareServices": [
+        "app/share/services/index"
+      ],
+      "@ShareHooks": [
+        "app/share/hooks/index"
+      ],
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

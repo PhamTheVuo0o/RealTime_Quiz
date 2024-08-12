@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "MonitorService.Protos";
+
+import "google/protobuf/timestamp.proto";
+
+package MonitorService;
+
+message PingResponse {
+  bool IsServiceName= 1;
+  google.protobuf.Timestamp CurrentTime = 2;
+}

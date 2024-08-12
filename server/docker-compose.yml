@@ -1,0 +1,71 @@
+version: '3.4'
+
+services:
+  webclient:
+    build:
+      context: ../client
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    networks:
+      - AppCoreLocalDockerNetwork
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: Services/ApiGateway/Dockerfile
+
+  appcore.identity.api:
+    image: ${DOCKER_REGISTRY-}appcore.identity.api
+    build:
+      context: .
+      dockerfile: Services/Identity/AppCore.Identity.API/Dockerfile
+  
+  appcore.core.api:
+    image: ${DOCKER_REGISTRY-}appcore.core.api
+    build:
+      context: .
+      dockerfile: Services/Core/AppCore.Core.API/Dockerfile
+  
+  postgresdata:
+    image: postgres:latest
+    restart: always
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.2
+
+  pgadmin:
+    image: dpage/pgadmin4
+  
+  emqx:
+    image: emqx/emqx:latest
+    container_name: emqx
+    ports:
+      - "1883:1883"
+      - "8083:8083"
+      - "8084:8084"
+      - "8883:8883"
+      - "18083:18083"
+    networks:
+      - AppCoreLocalDockerNetwork
+      
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - AppCoreLocalDockerNetwork
+    
+volumes:
+  postgresdata:
+  elasticsearch-data:
+  pgadmin_data:
+
+networks:
+  AppCoreLocalDockerNetwork:
+      driver: bridge

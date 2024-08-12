@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "MonitorService.Protos";
+
+import "Protos/MonitorService/Ping/Requests/PingRequest.proto";
+import "Protos/MonitorService/Ping/Responses/PingResponse.proto";
+
+package MonitorService;
+
+service GrpcPingServices {
+	rpc Ping (PingRequest) returns (PingResponse);
+}

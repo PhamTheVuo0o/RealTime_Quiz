@@ -1,0 +1,152 @@
+.LoaderBox {
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.Loader {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 8px;
+}
+.Loader div {
+  width: 35px;
+  height: 35px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+}
+.content-loading{
+  margin-top: 100px;
+  color:rgba(0, 0, 0, 0.5);
+}
+.Loader div:before,
+.Loader div:after {
+  content: '';
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  border-radius: 50%;
+}
+.Loader div:nth-child(1):before {
+  background-color: #006769;
+  animation: scale-1 2400ms linear infinite;
+}
+.Loader div:nth-child(1):after {
+  background-color: rgba(255, 255, 255, 0.7);
+  animation: scale-2 2400ms linear infinite;
+}
+.Loader div:nth-child(2):before {
+  background-color: #40A578;
+  animation: scale-1 2400ms linear infinite;
+}
+.Loader div:nth-child(2):after {
+  background-color: rgba(255, 255, 255, 0.7);
+  animation: scale-2 2400ms linear infinite;
+}
+.Loader div:nth-child(3):before {
+  background-color: #9DDE8B;
+  animation: scale-1 2400ms linear infinite;
+}
+.Loader div:nth-child(3):after {
+  background-color: rgba(255, 255, 255, 0.7);
+  animation: scale-2 2400ms linear infinite;
+}
+.Loader div:nth-child(4):before {
+  background-color: #E6FF94;
+  animation: scale-1 2400ms linear infinite;
+}
+.Loader div:nth-child(4):after {
+  background-color: rgba(255, 255, 255, 0.7);
+  animation: scale-2 2400ms linear infinite;
+}
+.Loader div:nth-child(2):before,
+.Loader div:nth-child(2):after {
+  animation-delay: 300ms;
+}
+.Loader div:nth-child(3):before,
+.Loader div:nth-child(3):after {
+  animation-delay: 600ms;
+}
+.Loader div:nth-child(4):before,
+.Loader div:nth-child(4):after {
+  animation-delay: 900ms;
+}
+@-moz-keyframes scale-1 {
+  0% {
+    transform: scale(0);
+    z-index: 2;
+  }
+  50%, 100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes scale-1 {
+  0% {
+    transform: scale(0);
+    z-index: 2;
+  }
+  50%, 100% {
+    transform: scale(1);
+  }
+}
+@-o-keyframes scale-1 {
+  0% {
+    transform: scale(0);
+    z-index: 2;
+  }
+  50%, 100% {
+    transform: scale(1);
+  }
+}
+@keyframes scale-1 {
+  0% {
+    transform: scale(0);
+    z-index: 2;
+  }
+  50%, 100% {
+    transform: scale(1);
+  }
+}
+@-moz-keyframes scale-2 {
+  0%, 50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes scale-2 {
+  0%, 50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-o-keyframes scale-2 {
+  0%, 50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes scale-2 {
+  0%, 50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
