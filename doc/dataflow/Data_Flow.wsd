@@ -1,0 +1,64 @@
+@startuml Dataflow_flow
+skinparam SequenceMessageAlign left
+skinparam ResponseMessagebelowArrow true
+autonumber "<b>[000]"
+
+title <b>Dataflow
+footer Page %page% of %lastpage%
+
+actor User                      as us
+participant Frontend            as fe
+participant Backend             as be
+participant EMQX_Broker         as eb
+Database Database               as fd
+
+us -> fe: Select <b>Quiz</b>
+activate us
+activate fe
+fe -> eb: Subscribe the Topic: <b>'[QuizId]_Rank'</b>
+activate eb
+eb -> fe: Publish <b>Rank List</b> data\nTopic : <b>'[QuizId]_Rank'</b>
+deactivate eb
+fe -> be: Get Question List by <b>QuizId</b>
+activate be
+be -> fd: Get Question List by <b>QuizId</b>
+activate fd
+fd -> be: Return Question list
+deactivate fd
+be -> fe: Return Question list
+deactivate be
+fe -> fe: Update Question list
+fe -> us: Show Question list
+us -> fe: <b>Star Quiz
+us -> fe: <b>Submit anwser</b>
+fe -> be: <b>Submit anwser</b>\nby QuizId, QuestionId, UserId
+activate be
+be -> fd: Chek answer data
+activate fd
+fd -> be: Return answer data
+deactivate fd
+alt answer right
+be -> fd: Update User <b>Core</b>\nby QuizId, QuestionId, UserId
+activate fd
+be -> fd: Get <b>Rank List</b> by QuizId\nSort <b>des</b> by <b>Core</b>,then <b>asc</b> by <b>Answer time</b>
+deactivate fd
+be -> eb: Publish <b>Rank List</b> data\nTopic : <b>'[QuizId]_Rank'</b>
+activate eb
+eb -> fe: Publish <b>Rank List</b> data\nTopic : <b>'[QuizId]_Rank'</b>\n<b>To all Client Subscribe the topic</b>
+deactivate eb
+fe -> fe: Update <b>Rank List</b> realtime
+fe -> us: Show new <b>Rank List</b>
+be -> fe: Return new <b>Core</b>
+fe -> fe: Update <b>Core</b>\nDisable <b>Submit Answer Button</b>
+fe -> us: Show new <b>Core</b>
+else answer wrong
+
+be -> fe: Return old <b>Core</b>
+deactivate be
+fe -> fe: Keep old <b>Core</b>\nDisable <b>Submit Answer Button</b>
+fe -> us: Show old <b>Core</b>
+end
+activate fd
+deactivate fe
+deactivate us
+@enduml
