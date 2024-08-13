@@ -16,7 +16,6 @@ export const Login = () => {
   const isAuth = useSelector((state: RootState) => state.GlobalVar.isAuth);
 
   const { login, isError, isNotActive } = useLogin();
-  console.log(isError, isNotActive)
 
   const handleLogin = () => {
     login({ email, password, isRememberMe });

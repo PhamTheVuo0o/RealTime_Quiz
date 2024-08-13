@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Grid, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Button } from '@mui/material';
 import { useI18nContext } from '@ShareCores';
 
@@ -23,7 +23,19 @@ interface QuestionComponentProps {
 export const QuestionComponent: React.FC<QuestionComponentProps> = (
   { questionId, questionData, isStartQuiz, onSubmitAnswer }) => {
   const { t } = useI18nContext();
-  const questionDetail: QuestionDetail = JSON.parse(questionData);
+
+  const [questionDetail, setQuestionDetail] = useState<QuestionDetail>({
+    Items:[],Question:''
+  });
+
+  useEffect(() => {
+    try{
+      const tempQuestionDetail: QuestionDetail = JSON.parse(questionData);
+      setQuestionDetail(tempQuestionDetail);
+    } catch (error) {
+    }
+  }, [questionData]);
+
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [submitedAnswer, setSubmitedAnswer] = useState(false);
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { List, ListItem, ListItemText, Typography } from '@mui/material';
 
 export interface RankItem {
@@ -14,7 +14,16 @@ interface RankListProps {
 }
 
 export const RankList: React.FC<RankListProps> = ({ json, currentUserName }) => {
-  const rankItems: RankItem[] = JSON.parse(json);
+  const [rankItems, setRankItems] = useState<RankItem[]>([]);
+
+  useEffect(() => {
+    try{
+      const tempRankItems = JSON.parse(json);
+      setRankItems(tempRankItems);
+    } catch (error) {
+    }
+  }, [json]);
+
   return (
     <List>
       {rankItems && (rankItems.map((item, index) => (
