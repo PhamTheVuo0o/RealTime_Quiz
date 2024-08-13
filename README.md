@@ -1,4 +1,4 @@
-# Real-Time Vocabulary Quiz Dmo
+# Real-Time Vocabulary Quiz Demo
 
 ## Overview
 
