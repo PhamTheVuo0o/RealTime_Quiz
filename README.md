@@ -28,7 +28,7 @@ Welcome to the Real-Time Quiz coding demo! This project include technical soluti
    - **Data Flow**: Explain how data flows through the system from when a user joins a quiz to when the leaderboard is updated.
    - **Technologies and Tools**: List and justify the technologies and tools chosen for each component.
 
-### Part 2: Implementation (client and server folder)
+### Part 2: Implementation (doc, client and server folder)
 
 1. **Pick a Component**:
    - Implement one of the core components below using the technologies that you are comfortable with. The rest of the system can be mocked using mock services or data.
@@ -40,7 +40,7 @@ Welcome to the Real-Time Quiz coding demo! This project include technical soluti
 
 3. **Build For the Future**:
    - **Scalability**: Design and implement your component with scalability in mind. Consider how the system would handle a large number of users or quiz sessions. Discuss any trade-offs you made in your design and implementation.
-   - **Performance**: Your component should perform well even under heavy load. Consider how you can optimize your code and your use of resources to ensure high performance.
-   - **Reliability**: Your component should be reliable and handle errors gracefully. Consider how you can make your component resilient to failures.
-   - **Maintainability**: Your code should be clean, well-organized, and easy to maintain. Consider how you can make it easy for other developers to understand and modify your code.
+   - **Performance**: Component should perform well even under heavy load. Consider how you can optimize your code and your use of resources to ensure high performance.
+   - **Reliability**: Component should be reliable and handle errors gracefully. Consider how you can make your component resilient to failures.
+   - **Maintainability**: The code should be clean, well-organized, and easy to maintain. Consider how you can make it easy for other developers to understand and modify your code.
    - **Monitoring and Observability**: Discuss how you would monitor the performance of your component and diagnose issues. Consider how you can make your component observable.
